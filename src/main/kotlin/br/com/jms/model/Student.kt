@@ -13,8 +13,11 @@ data class Student(
     val lastName: String,
 
     @Column(name ="student_age")
-    val age: Int,
+    val age: Int?,
 
     @Column(name ="student_cellphone_number")
-    val cellphone: Int?
+    val cellphone: Int?,
+
+    @Column(name ="student_serie")
+    val serie: Int
 )
