@@ -11,7 +11,7 @@ class PlayerController(val service: StudentService) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun createStudent(@RequestBody student: Student): Student = service.createStudent(student)
+    fun createStudent(@RequestBody student: List<Student>) = service.createStudent(student)
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

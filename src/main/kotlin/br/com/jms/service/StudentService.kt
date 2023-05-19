@@ -15,7 +15,13 @@ class StudentService(val repository: StudentRepository) {
     fun getStudentById(id: Long): Student =
         repository.findByIdOrNull(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
 
-    fun createStudent(student: Student): Student = repository.save(student)
+    fun createStudent(students: List<Student>): List<Student> {
+        val savedStudent = mutableListOf<Student>()
+        for (student in students) {
+            savedStudent.add(repository.save(student))
+        }
+        return repository.findAll()
+    }
 
     fun removeStudent(id: Long) {
         if (repository.existsById(id)) repository.deleteById(id)
